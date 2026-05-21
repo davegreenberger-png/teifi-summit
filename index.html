@@ -26,25 +26,57 @@
     padding: 0;
   }
   .hero {
-    background: linear-gradient(135deg, #008060 0%, #004c3f 50%, #5c6ac4 100%);
+    background:
+      linear-gradient(135deg, rgba(0,128,96,0.78) 0%, rgba(0,76,63,0.72) 50%, rgba(92,106,196,0.78) 100%),
+      url('https://images.unsplash.com/photo-1559511260-66a654ae982a?w=2000&q=85') center/cover no-repeat;
     color: white;
-    padding: 60px 40px;
+    padding: 120px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   .hero::after {
     content: "🍁";
     position: absolute;
     font-size: 320px;
-    opacity: 0.08;
+    opacity: 0.12;
     right: -40px;
     top: -60px;
     transform: rotate(15deg);
   }
-  .hero h1 { font-size: 42px; margin-bottom: 12px; font-weight: 700; }
-  .hero .subtitle { font-size: 20px; opacity: 0.95; margin-bottom: 8px; }
-  .hero .meta { font-size: 14px; opacity: 0.85; margin-top: 16px; }
+  .hero h1 { font-size: 52px; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 22px; opacity: 0.97; margin-bottom: 8px; font-weight: 500; }
+  .hero .meta { font-size: 14px; opacity: 0.92; margin-top: 20px; }
+  .photo-band {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    text-transform: uppercase;
+  }
+  .photo-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  .photo-band span { position: relative; z-index: 1; }
+  .photo-band.skyline { background-image: url('https://images.unsplash.com/photo-1609825488888-3a766db05542?w=2000&q=85'); }
+  .photo-band.mountains { background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2000&q=85'); }
+  .photo-band.sunset { background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=2000&q=85'); }
+  .photo-band.office { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=2000&q=85'); }
+  .photo-band.forest { background-image: url('https://images.unsplash.com/photo-1496564203457-11bb12075d90?w=2000&q=85'); }
+  .photo-band.fun { background-image: url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=2000&q=85'); }
   .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
   .objectives {
     background: var(--card);
@@ -177,6 +209,8 @@
   <div class="meta">Host: Dave Greenberger · Head of Enterprise, Specialized Industries</div>
 </div>
 
+<div class="photo-band skyline"><span>🌆 Welcome to Vancouver</span></div>
+
 <div class="container">
 
   <div class="objectives">
@@ -188,6 +222,12 @@
       <li>Reset, recharge, and have fun heading into H2</li>
     </ul>
   </div>
+
+</div>
+
+<div class="photo-band mountains"><span>🏔️ Day 1 — H2 Planning & POS Labs</span></div>
+
+<div class="container">
 
   <!-- DAY 1 -->
   <div class="day1">
@@ -308,6 +348,12 @@
     </div>
   </div>
 
+</div>
+
+<div class="photo-band sunset"><span>🌅 An Evening in Vancouver</span></div>
+
+<div class="container">
+
   <!-- DAY 2 -->
   <div class="day2">
     <div class="day-header">
@@ -391,6 +437,12 @@
     </div>
   </div>
 
+</div>
+
+<div class="photo-band fun"><span>🎉 Day 2 — Partners & Fun Time</span></div>
+
+<div class="container">
+
   <!-- ATTENDEES -->
   <div class="attendees">
     <h2>👥 Attendees</h2>
@@ -429,6 +481,8 @@
   </div>
 
 </div>
+
+<div class="photo-band forest"><span>🌲 See You in June 🌲</span></div>
 
 </body>
 </html>
