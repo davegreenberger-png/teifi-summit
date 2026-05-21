@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teifi x Shopify Partner Summit — Vancouver | June 1-2, 2026</title>
+<style>
+  :root {
+    --shopify-green: #008060;
+    --shopify-green-dark: #004c3f;
+    --shopify-purple: #5c6ac4;
+    --bg: #f6f6f7;
+    --card: #ffffff;
+    --border: #e1e3e5;
+    --text: #1a1a1a;
+    --muted: #6d7175;
+    --day1: #008060;
+    --day2: #5c6ac4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #008060 0%, #004c3f 50%, #5c6ac4 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "🍁";
+    position: absolute;
+    font-size: 320px;
+    opacity: 0.08;
+    right: -40px;
+    top: -60px;
+    transform: rotate(15deg);
+  }
+  .hero h1 { font-size: 42px; margin-bottom: 12px; font-weight: 700; }
+  .hero .subtitle { font-size: 20px; opacity: 0.95; margin-bottom: 8px; }
+  .hero .meta { font-size: 14px; opacity: 0.85; margin-top: 16px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+  .objectives {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-bottom: 32px;
+    border-left: 4px solid var(--shopify-green);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .objectives h2 { font-size: 18px; margin-bottom: 12px; color: var(--shopify-green-dark); }
+  .objectives ul { list-style: none; padding-left: 0; }
+  .objectives li { padding: 4px 0; padding-left: 24px; position: relative; }
+  .objectives li::before { content: "🎯"; position: absolute; left: 0; }
+  .day-header {
+    background: var(--day1);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px 12px 0 0;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .day2 .day-header { background: var(--day2); }
+  .day-header .location { font-size: 13px; font-weight: 400; opacity: 0.9; }
+  .agenda {
+    background: var(--card);
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin-bottom: 24px;
+  }
+  .session {
+    display: grid;
+    grid-template-columns: 160px 1fr 200px;
+    gap: 16px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .session:last-child { border-bottom: none; }
+  .session.break { background: #fafbfb; }
+  .session.meal { background: #fff8f0; }
+  .session.fun { background: #f5f0ff; }
+  .session .time {
+    font-weight: 600;
+    color: var(--shopify-green-dark);
+    font-size: 14px;
+  }
+  .day2 .session .time { color: #3d4499; }
+  .session .name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .session .desc {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .session .owner {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+  }
+  .session .owner strong { display: block; color: var(--text); font-weight: 500; }
+  .icon { display: inline-block; margin-right: 6px; }
+  .checklist {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-top: 32px;
+    border-left: 4px solid var(--shopify-purple);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .checklist h2 { font-size: 18px; margin-bottom: 12px; color: #3d4499; }
+  .checklist ul { list-style: none; padding-left: 0; }
+  .checklist li {
+    padding: 6px 0;
+    padding-left: 28px;
+    position: relative;
+    border-bottom: 1px dashed #f0f0f0;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+    color: var(--shopify-purple);
+  }
+  .attendees {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-top: 32px;
+    border-left: 4px solid #ffa500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .attendees h2 { font-size: 18px; margin-bottom: 16px; color: #b87600; }
+  .attendees table { width: 100%; border-collapse: collapse; }
+  .attendees th, .attendees td {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .attendees th { font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .footer {
+    text-align: center;
+    padding: 40px 24px 20px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  @media (max-width: 700px) {
+    .session { grid-template-columns: 1fr; }
+    .session .owner { text-align: left; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🍁 Teifi × Shopify Partner Summit</h1>
+  <div class="subtitle">Vancouver, Canada</div>
+  <div class="subtitle">June 1–2, 2026</div>
+  <div class="meta">Host: Dave Greenberger · Head of Enterprise, Specialized Industries</div>
+</div>
+
+<div class="container">
+
+  <div class="objectives">
+    <h2>🎯 Summit Objectives</h2>
+    <ul>
+      <li>Align on H2 territory plans across all 6 AEs</li>
+      <li>Deepen Teifi partnership through hands-on POS Labs</li>
+      <li>Build joint go-to-market motion with Teifi + EY</li>
+      <li>Reset, recharge, and have fun heading into H2</li>
+    </ul>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day1">
+    <div class="day-header">
+      <span>📅 Day 1 — Monday, June 1</span>
+      <span class="location">📍 Location TBD, Vancouver</span>
+    </div>
+    <div class="agenda">
+
+      <div class="session meal">
+        <div class="time">8:00 – 8:30 AM</div>
+        <div>
+          <div class="name"><span class="icon">☕</span>Breakfast</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Owner</strong>_____________</div>
+      </div>
+
+      <div class="session">
+        <div class="time">8:30 – 9:05 AM</div>
+        <div>
+          <div class="name"><span class="icon">🗺️</span>H2 Territory Planning — Tanner Andresen</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Dave + Tanner</strong></div>
+      </div>
+
+      <div class="session">
+        <div class="time">9:05 – 9:40 AM</div>
+        <div>
+          <div class="name"><span class="icon">🗺️</span>H2 Territory Planning — Alden Morse</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Dave + Alden</strong></div>
+      </div>
+
+      <div class="session break">
+        <div class="time">9:40 – 9:50 AM</div>
+        <div>
+          <div class="name"><span class="icon">☕</span>Break</div>
+          <div class="desc"></div>
+        </div>
+        <div class="owner"></div>
+      </div>
+
+      <div class="session">
+        <div class="time">9:50 – 10:25 AM</div>
+        <div>
+          <div class="name"><span class="icon">🗺️</span>H2 Territory Planning — Anthony Anastasi</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Dave + Anthony</strong></div>
+      </div>
+
+      <div class="session">
+        <div class="time">10:25 – 11:00 AM</div>
+        <div>
+          <div class="name"><span class="icon">🗺️</span>H2 Territory Planning — Kristy Shimkus</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Dave + Kristy</strong></div>
+      </div>
+
+      <div class="session break">
+        <div class="time">11:00 – 11:10 AM</div>
+        <div>
+          <div class="name"><span class="icon">☕</span>Break</div>
+          <div class="desc"></div>
+        </div>
+        <div class="owner"></div>
+      </div>
+
+      <div class="session">
+        <div class="time">11:10 – 11:45 AM</div>
+        <div>
+          <div class="name"><span class="icon">🗺️</span>H2 Territory Planning — Nick Essling</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Dave + Nick</strong></div>
+      </div>
+
+      <div class="session">
+        <div class="time">11:45 AM – 12:20 PM</div>
+        <div>
+          <div class="name"><span class="icon">🗺️</span>H2 Territory Planning — Rebecca (Beck) Pallister</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Dave + Beck</strong></div>
+      </div>
+
+      <div class="session meal">
+        <div class="time">12:30 – 1:30 PM</div>
+        <div>
+          <div class="name"><span class="icon">🍽️</span>Lunch</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Owner</strong>_____________</div>
+      </div>
+
+      <div class="session">
+        <div class="time">1:30 – 4:30 PM</div>
+        <div>
+          <div class="name"><span class="icon">🛒</span>Teifi POS Labs</div>
+          <div class="desc">Hands-on retail + POS workshop with the Teifi team</div>
+        </div>
+        <div class="owner"><strong>Teifi</strong></div>
+      </div>
+
+      <div class="session meal">
+        <div class="time">6:30 PM</div>
+        <div>
+          <div class="name"><span class="icon">🍷</span>Team Dinner</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Venue TBD</strong></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day2">
+    <div class="day-header">
+      <span>📅 Day 2 — Tuesday, June 2</span>
+      <span class="location">📍 Teifi Office, Vancouver</span>
+    </div>
+    <div class="agenda">
+
+      <div class="session meal">
+        <div class="time">8:00 – 9:00 AM</div>
+        <div>
+          <div class="name"><span class="icon">☕</span>Breakfast</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Teifi Office</strong></div>
+      </div>
+
+      <div class="session">
+        <div class="time">9:00 – 10:00 AM</div>
+        <div>
+          <div class="name"><span class="icon">🌊</span>In-River Product Enablement</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Owner</strong>_____________</div>
+      </div>
+
+      <div class="session">
+        <div class="time">10:00 – 10:45 AM</div>
+        <div>
+          <div class="name"><span class="icon">🏢</span>EY Overview</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>EY Team</strong></div>
+      </div>
+
+      <div class="session break">
+        <div class="time">10:45 – 11:00 AM</div>
+        <div>
+          <div class="name"><span class="icon">☕</span>Break</div>
+          <div class="desc"></div>
+        </div>
+        <div class="owner"></div>
+      </div>
+
+      <div class="session">
+        <div class="time">11:00 AM – 12:30 PM</div>
+        <div>
+          <div class="name"><span class="icon">🤝</span>Partner Joint Go-To-Market</div>
+          <div class="desc">Building shared GTM plays with Teifi + EY</div>
+        </div>
+        <div class="owner"><strong>Teifi + EY</strong></div>
+      </div>
+
+      <div class="session meal">
+        <div class="time">12:30 – 1:30 PM</div>
+        <div>
+          <div class="name"><span class="icon">🍽️</span>Lunch</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Owner</strong>_____________</div>
+      </div>
+
+      <div class="session fun">
+        <div class="time">1:30 PM</div>
+        <div>
+          <div class="name"><span class="icon">🎉</span>Fun Time!</div>
+          <div class="desc">Vancouver activity — Stanley Park bikes, Capilano Bridge, Granville Island, harbour cruise…</div>
+        </div>
+        <div class="owner"><strong>TBD</strong></div>
+      </div>
+
+      <div class="session meal">
+        <div class="time">6:00 PM</div>
+        <div>
+          <div class="name"><span class="icon">🍽️</span>Closing Dinner</div>
+          <div class="desc">_______________________________________________</div>
+        </div>
+        <div class="owner"><strong>Venue TBD</strong></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ATTENDEES -->
+  <div class="attendees">
+    <h2>👥 Attendees</h2>
+    <table>
+      <tr><th>#</th><th>Name</th><th>Company</th><th>Role</th><th>Email</th></tr>
+      <tr><td>1</td><td>Dave Greenberger</td><td>Shopify</td><td>Organizer</td><td>dave.greenberger@shopify.com</td></tr>
+      <tr><td>2</td><td>Tanner Andresen</td><td>Shopify</td><td>Attendee</td><td>tanner.andresen@shopify.com</td></tr>
+      <tr><td>3</td><td>Alden Morse</td><td>Shopify</td><td>Attendee</td><td>alden.morse@shopify.com</td></tr>
+      <tr><td>4</td><td>Anthony Anastasi</td><td>Shopify</td><td>Attendee</td><td>anthony.anastasi@shopify.com</td></tr>
+      <tr><td>5</td><td>Kristy Shimkus</td><td>Shopify</td><td>Attendee</td><td>kristy.shimkus@shopify.com</td></tr>
+      <tr><td>6</td><td>Nick Essling</td><td>Shopify</td><td>Attendee</td><td>nick.essling@shopify.com</td></tr>
+      <tr><td>7</td><td>Rebecca (Beck) Pallister</td><td>Shopify</td><td>Attendee</td><td>rebecca.pallister@shopify.com</td></tr>
+      <tr><td>8</td><td>—</td><td>Teifi</td><td>Partner</td><td>—</td></tr>
+      <tr><td>9</td><td>—</td><td>EY</td><td>Partner</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="checklist">
+    <h2>✅ Pre-Summit Checklist</h2>
+    <ul>
+      <li>Lock breakfast venue Day 1</li>
+      <li>Lock lunch + dinner reservations Day 1</li>
+      <li>Confirm POS Labs space + setup with Teifi</li>
+      <li>Confirm Teifi office access Day 2</li>
+      <li>Send H2 territory pre-work to all 6 AEs (due May 28)</li>
+      <li>Confirm EY presenter + content</li>
+      <li>Confirm In-River enablement owner</li>
+      <li>Book fun activity Day 2</li>
+      <li>Send final agenda + logistics to attendees by May 25</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    🌲 See you in Vancouver! 🌲
+  </div>
+
+</div>
+
+</body>
+</html>
